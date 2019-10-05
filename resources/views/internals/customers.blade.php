@@ -1,28 +1,45 @@
 @extends('layout')
 
-@section('content')    
-    <h1>Customers</h1>
+@section('title', 'Customer List')
 
-    <form action="customers" method="POST" class="pb-5">
-        @csrf
-        <label for="name">Name</label>
-        <div class="input-group pb-3">
-            <input type="text" name="name" id="name" value="{{old('name')}}">
+@section('content')
+    <div class="row">
+        <div class="col-12">
+            <h1>Customers</h1>
         </div>
-        <div>{{ $errors->first('name') }}</div>
-        
-        <label for="email">Email</label>
-        <div class="input-group pb-3">
-            <input type="email" name="email" id="email" value="{{old('email')}}">
-        </div>
-        <div>{{ $errors->first('email') }}</div>
-        
-        <button type="submit" class="btn btn-primary">Add Customer</button>
-    </form>
+    </div>
 
-    <ul>
-        @foreach ($customers as $customer)
-        <li>{{ $customer->name }} <span>({{ $customer->email }})</span></li>
-        @endforeach
-    </ul>
+    <div class="row">
+        <div class="col-12">
+            <form action="customers" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" name="name" id="name" value="{{old('name')}}">
+                </div>
+                <div>{{ $errors->first('name') }}</div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="email" name="email" id="email" value="{{old('email')}}">
+                </div>
+                <div>{{ $errors->first('email') }}</div>
+                
+                <button type="submit" class="btn btn-primary">Add Customer</button>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                @foreach ($customers as $customer)
+                <li>{{ $customer->name }} <span>({{ $customer->email }})</span></li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+
 @endsection
