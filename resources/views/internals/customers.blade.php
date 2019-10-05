@@ -8,6 +8,8 @@
         <div class="input-group pb-3">
             <input type="text" name="name" id="name">
         </div>
+        <div>{{ $errors->first('name') }}</div>
+        
         <button type="submit" class="btn btn-primary">Add Customer</button>
     </form>
 
