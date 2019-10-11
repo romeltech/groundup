@@ -1,17 +1,17 @@
 @extends('layout')
 
-@section('title', 'Customer List')
+@section('title', 'Add New Customer')
 
 @section('content')
     <div class="row">
         <div class="col-12">
-            <h1>Customers</h1>
+            <h1>Add New Customer</h1>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
-            <form action="customers" method="POST">
+            <form action="/customers" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -47,7 +47,7 @@
             </form>
         </div>
     </div>
-
+{{-- 
     <hr>
 
     <div class="row">
@@ -81,6 +81,6 @@
                 </ul>
             @endforeach
         </div>
-    </div>
+    </div> --}}
 
 @endsection

@@ -8,12 +8,14 @@ use App\Company;
 
 class CustomersController extends Controller
 {
-    public function list(){
-        // Scopes
-        $activeCustomers = Customer::active()->get();
-        $inActiveCustomers = Customer::inactive()->get();
+    public function index(){
+        $customers = Customer::all();
+        return view('customers.index', compact('customers'));
+    }
+    public function create()
+    {
         $companies = Company::all();
-        return view('internals.customers', compact('activeCustomers', 'inActiveCustomers', 'companies'));
+        return view('customers.create', compact('companies') );
     }
     public function store(){
 
@@ -25,12 +27,6 @@ class CustomersController extends Controller
         ]);
 
         Customer::create($data);
-
-        // $customers = new Customer();
-        // $customers->name = request('name');
-        // $customers->email = request('email');
-        // $customers->active = request('active');
-        // $customers->save();
-        return back();
+        return redirect('customers');
     }
 }
