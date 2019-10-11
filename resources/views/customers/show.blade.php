@@ -6,7 +6,14 @@
     <div class="row">
         <div class="col-12">
             <h1>Details for {{ $customer->name }}</h1>
-            <p><a href="/customers/{{ $customer->id }}/edit">Edit</a></p>
+            <div style="display:flex;">
+                <a href="/customers/{{ $customer->id }}/edit" class="btn btn-info">Edit</a>
+                <form action="/customers/{{ $customer->id }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
         </div>
     </div>
 
