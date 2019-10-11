@@ -22,4 +22,10 @@ class Customer extends Model
     {
         return $query->where('active', 0);
     }
+
+    // Relationship to Company
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }
