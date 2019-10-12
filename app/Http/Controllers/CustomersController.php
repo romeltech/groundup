@@ -8,6 +8,12 @@ use App\Company;
 
 class CustomersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('auth')->except(['index']);
+        // $this->middleware('auth')->only(['index']);
+    }
     public function index(){
         $customers = Customer::all();
         return view('customers.index', compact('customers'));
