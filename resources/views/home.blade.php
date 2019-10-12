@@ -15,7 +15,10 @@
                     @endif
 
                     <my-button text="aaaaaaaaaaaaaa" type="submit"></my-button>
-                    <p>Just updated the ui preset and suggested Tailwind CSS</p>
+                    <p>Jobs</p>
+                    <p>php artisan queue:work</p>
+                    <p>php artisan queue:work > storage/logs/jobs.log &</p>
+                    <p>KILL [JOB ID]</p>
                 </div>
             </div>
         </div>
