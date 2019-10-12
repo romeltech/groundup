@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Customer;
 use App\Company;
+use App\Customer;
+use App\Events\NewCustomerHasRegisteredEvent;
+use App\Mail\WelcomeNewUserMail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CustomersController extends Controller
 {
@@ -14,21 +17,31 @@ class CustomersController extends Controller
         // $this->middleware('auth')->except(['index']);
         // $this->middleware('auth')->only(['index']);
     }
+
     public function index(){
+
         $customers = Customer::all();
+
         return view('customers.index', compact('customers'));
     }
+
     public function create()
     {
         $companies = Company::all();
         $customer = new Customer();
+
         return view('customers.create', compact('companies', 'customer') );
     }
+
     public function store(){
 
-        Customer::create($this->validateRequest());
-        return redirect('customers');
+        $customer = Customer::create($this->validateRequest());
+
+        event(new NewCustomerHasRegisteredEvent($customer));
+        // dump('Register to newsletter');
+        // return redirect('customers');
     }
+
     public function show(Customer $customer)
     {
         return view('customers.show', compact('customer'));
@@ -37,22 +50,22 @@ class CustomersController extends Controller
     public function edit(Customer $customer)
     {
         $companies = Company::all();
+
         return view('customers.edit', compact('customer', 'companies'));
     }
+
     public function update(Customer $customer)
     {
-        // $data = request()->validate([
-        //     'name' => 'required|min:3',
-        //     'email' => 'required|email',
-        //     'active' => 'required',
-        //     'company_id' => 'required'
-        // ]);
+
         $customer->update($this->validateRequest());
+
         return redirect('customers/'. $customer->id);
     }
+
     public function destroy(Customer $customer)
     {
         $customer->delete();
+
         return redirect('customers');
     }
 
