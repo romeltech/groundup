@@ -15,6 +15,7 @@
                     @endif
 
                     <my-button text="aaaaaaaaaaaaaa" type="submit"></my-button>
+                    <p>Just updated the ui preset and suggested Tailwind CSS</p>
                 </div>
             </div>
         </div>
