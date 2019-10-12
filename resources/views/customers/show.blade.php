@@ -7,8 +7,8 @@
         <div class="col-12">
             <h1>Details for {{ $customer->name }}</h1>
             <div style="display:flex;">
-                <a href="/customers/{{ $customer->id }}/edit" class="btn btn-info">Edit</a>
-                <form action="/customers/{{ $customer->id }}" method="POST">
+                <a href="{{ route('customers.edit', ['customer' => $customer] ) }}" class="btn btn-info">Edit</a>
+                <form action="{{ route('customers.destroy', ['customer' => $customer] ) }}" method="POST">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn btn-danger">Delete</button>

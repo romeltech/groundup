@@ -27,6 +27,6 @@ class ContactFormController extends Controller
         // session()->flash('message', 'Thanks for you message. We\'ll be in touch.');
         // return redirect('contact');
 
-        return redirect('contact')->with('message', 'Thanks for you message. We\'ll be in touch.');
+        return redirect('contact-us')->with('message', 'Thanks for you message. We\'ll be in touch.');
     }
 }

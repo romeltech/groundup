@@ -15,12 +15,13 @@
 //     return view('welcome');
 // });
 
-Route::view('/', 'home');
+Route::view('/', 'home')->name('home');
 
-Route::get('contact', 'ContactFormController@create');
-Route::post('contact', 'ContactFormController@store');
+Route::get('contact-us', 'ContactFormController@create')->name('contact.create');
+Route::post('contact-us', 'ContactFormController@store')->name('contact.store');
 
-Route::view('/about', 'about')->middleware('test');
+// Route::view('/about', 'about')->middleware('test');
+Route::view('about', 'about')->name('about');
 
 // Route::get('customers', 'CustomersController@index');
 // Route::get('customers/create', 'CustomersController@create');
