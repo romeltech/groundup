@@ -25,4 +25,12 @@
         </div>
     </div>
 
+    @if ($customer->image)
+        <div class="row">
+            <div class="col-12">
+                <img src="{{ asset('storage/'.$customer->image) }}" alt="" class="thumbnail" style="width:200px;height:auto;">
+            </div>
+        </div>
+    @endif
+
 @endsection

@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-12">
-            <form action="{{ route('customers.store', ['customer' => $customer] ) }}" method="POST">
+            <form action="{{ route('customers.store', ['customer' => $customer] ) }}" method="POST" enctype="multipart/form-data">
                 @include('customers.form')
                 <button type="submit" class="btn btn-primary">Add Customer</button>
             </form>
