@@ -21,8 +21,9 @@ class CustomersController extends Controller
 
     public function index(){
 
-        $customers = Customer::all();
+        $customers = Customer::with('company')->get();
 
+        // dd($customers->toArray());
         return view('customers.index', compact('customers'));
     }
 
