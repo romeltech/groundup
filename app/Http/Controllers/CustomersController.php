@@ -37,6 +37,8 @@ class CustomersController extends Controller
 
     public function store(){
 
+        $this->authorize('create', Customer::class);
+
         $customer = Customer::create($this->validateRequest());
 
         $this->storeImage($customer);
@@ -70,6 +72,8 @@ class CustomersController extends Controller
 
     public function destroy(Customer $customer)
     {
+        $this->authorize('delete', $customer);
+
         $customer->delete();
 
         return redirect('customers');
