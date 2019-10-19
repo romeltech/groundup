@@ -19,17 +19,10 @@
         </div>
     @endforeach
 
-    {{-- <div class="row">
-        <div class="col-12">
-            @foreach ($companies as $company)
-                <h3>{{$company->name}}</h3>
-                <ul>
-                    @foreach ($company->customers as $customer)
-                        <li> {{$customer->name}}</li>
-                    @endforeach
-                </ul>
-            @endforeach
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            {{ $customers->links() }}
         </div>
-    </div> --}}
+    </div>
 
 @endsection
